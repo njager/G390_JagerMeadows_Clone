@@ -17,12 +17,13 @@ public class BlueBase : MonoBehaviour
     void Start()
     {
         blueHealth = GetComponent<Health>().health;
+        SetText();
     }
 
     private void FixedUpdate()
     {
         blueHealth = GetComponent<Health>().health;
-        SetText();
+        //SetText();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,6 +31,7 @@ public class BlueBase : MonoBehaviour
         if (collision.gameObject.CompareTag("RedClone"))
         {
             health = collision.gameObject.GetComponent<Health>();
+            SetText();
             InvokeRepeating("DealDamage", 0f, 1f);
         }
     }
@@ -41,7 +43,15 @@ public class BlueBase : MonoBehaviour
 
     void DealDamage()
     {
-        health.TakeDamage(damage);
-        Debug.Log("Blue base is dealing damage to red clone!");
+        if (health.health > 0)
+        {
+            health.TakeDamage(damage);
+            Debug.Log("Blue base is dealing damage to red clone!");
+            SetText();
+        }
+        else
+        {
+            CancelInvoke("DealDamage");
+        }
     }
 }

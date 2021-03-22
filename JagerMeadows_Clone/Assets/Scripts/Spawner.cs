@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Spawner : MonoBehaviour
     public float blueStock;
     public float redStock;
     public float growthRate;
+    public TextMeshProUGUI blueStockText;
+    public TextMeshProUGUI redStockText;
 
     //private variables
     [SerializeField] private List<Transform> blueCloneList;
@@ -29,11 +32,16 @@ public class Spawner : MonoBehaviour
         chosenRedClone = redCloneList[redCloneIndex];
         chosenBlueSpawn = blueSpawnList[blueSpawnIndex].position;
         chosenRedSpawn = redSpawnList[redSpawnIndex].position;
+
+        SetText();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //set text
+        SetText();
+
         //set growth 
         blueStock += growthRate * Time.deltaTime;
         redStock += growthRate * Time.deltaTime;
@@ -137,13 +145,22 @@ public class Spawner : MonoBehaviour
 
     }
 
+    //spawn the chosen clone at chosen spawn point
     void SpawnBlueClone()
     {
         Instantiate(chosenBlueClone, chosenBlueSpawn, Quaternion.identity);
-    }
 
+        //if (chosen)
+    }
     void SpawnRedClone()
     {
         Instantiate(chosenRedClone, chosenRedSpawn, Quaternion.identity);
+    }
+
+    //sets the text objects
+    void SetText()
+    {
+        blueStockText.text = "Blue stock = " + blueStock.ToString("F1");
+        redStockText.text = "Red stock = " + redStock.ToString("F1");
     }
 }

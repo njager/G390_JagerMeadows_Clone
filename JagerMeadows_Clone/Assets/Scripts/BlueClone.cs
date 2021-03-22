@@ -36,7 +36,14 @@ public class BlueClone : MonoBehaviour
 
     void DealDamage()
     {
-        health.TakeDamage(damage);
-        Debug.Log("Blue clone is dealing damage to red clone!");
+        if (health.health > 0)
+        {
+            health.TakeDamage(damage);
+            Debug.Log("Blue clone is dealing damage to red clone!");
+        }
+        else
+        {
+            CancelInvoke("DealDamage");
+        }
     }
 }
