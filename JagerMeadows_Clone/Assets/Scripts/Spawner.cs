@@ -8,11 +8,15 @@ public class Spawner : MonoBehaviour
     //public variables
     public float blueStock;
     public float redStock;
-    public float growthRate;
+    public float blueGrowthRate;
+    public float redGrowthRate;
     public TextMeshProUGUI blueStockText;
     public TextMeshProUGUI redStockText;
 
     //private variables
+    [SerializeField] int regularCloneCost;
+    [SerializeField] int heavyCloneCost;
+    [SerializeField] int speedCloneCost;
     [SerializeField] private List<Transform> blueCloneList;
     [SerializeField] private List<Transform> redCloneList;
     [SerializeField] private List<Transform> blueSpawnList;
@@ -25,6 +29,8 @@ public class Spawner : MonoBehaviour
     int redCloneIndex = 0;
     int blueSpawnIndex = 0;
     int redSpawnIndex = 0;
+    bool blueHasUpgraded = false;
+    bool redHasUpgraded = false;
 
     private void Start()
     {
@@ -43,8 +49,8 @@ public class Spawner : MonoBehaviour
         SetText();
 
         //set growth 
-        blueStock += growthRate * Time.deltaTime;
-        redStock += growthRate * Time.deltaTime;
+        blueStock += blueGrowthRate * Time.deltaTime;
+        redStock += redGrowthRate * Time.deltaTime;
 
         //choosing the clone and spawn point
         //cycle choose the blue clone to spawn
@@ -60,7 +66,7 @@ public class Spawner : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            if (blueCloneIndex < blueCloneList.Count)
+            if (blueCloneIndex < blueCloneList.Count - 1)
             {
                 blueCloneIndex++;
                 Debug.Log("Blue clone index increased by 1");
@@ -81,7 +87,7 @@ public class Spawner : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Period))
         {
-            if (redCloneIndex < redCloneList.Count)
+            if (redCloneIndex < redCloneList.Count - 1)
             {
                 redCloneIndex++;
                 Debug.Log("Red clone index increased by 1");
@@ -102,7 +108,7 @@ public class Spawner : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            if (blueSpawnIndex < blueSpawnList.Count)
+            if (blueSpawnIndex < blueSpawnList.Count - 1)
             {
                 blueSpawnIndex++;
                 Debug.Log("Blue spawn index increased by 1");
@@ -123,7 +129,7 @@ public class Spawner : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            if (redSpawnIndex < redSpawnList.Count)
+            if (redSpawnIndex < redSpawnList.Count - 1)
             {
                 redSpawnIndex++;
                 Debug.Log("Red spawn index increased by 1");
@@ -131,30 +137,83 @@ public class Spawner : MonoBehaviour
             }
             chosenRedSpawn = redSpawnList[redSpawnIndex].position;
         }
-
+        else if (Input.GetKeyDown(KeyCode.Q) && blueStock >= 20 && blueHasUpgraded == false)
+        {
+            blueGrowthRate *= 1.5f;
+            blueHasUpgraded = true;
+            blueStock -= 20;
+        }
+        else if (Input.GetKeyDown(KeyCode.P) && redStock >= 20 && redHasUpgraded == false)
+        {
+            redGrowthRate *= 1.5f;
+            redHasUpgraded = true;
+            redStock -= 20;
+        }
 
         //get the input to spawn the clone
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            SpawnBlueClone();
+            if (blueStock >= 0)
+            {
+                SpawnBlueClone();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.RightShift))
         {
-            SpawnRedClone();
+            if (redStock >= 0)
+            {
+                SpawnRedClone();
+            }
         }
-
     }
 
     //spawn the chosen clone at chosen spawn point
     void SpawnBlueClone()
     {
-        Instantiate(chosenBlueClone, chosenBlueSpawn, Quaternion.identity);
-
-        //if (chosen)
+        //if regular clone and at least one stock
+        if (blueCloneIndex == 0 && blueStock >= regularCloneCost)
+        {
+            blueStock -= regularCloneCost;
+            Instantiate(chosenBlueClone, chosenBlueSpawn, Quaternion.identity);
+            Debug.Log("You spawned a regular blue clone!");
+        }
+        //or if heavy clone and at least on stock
+        else if (blueCloneIndex == 1 && blueStock >= heavyCloneCost)
+        {
+            blueStock -= heavyCloneCost;
+            Instantiate(chosenBlueClone, chosenBlueSpawn, Quaternion.identity);
+            Debug.Log("You spawned a heavy blue clone!");
+        }
+        else if (blueCloneIndex == 2 && blueStock >= speedCloneCost)
+        {
+            blueStock -= speedCloneCost;
+            Instantiate(chosenBlueClone, chosenBlueSpawn, Quaternion.identity);
+            Debug.Log("You spawned a speedy blue clone!");
+        }
     }
     void SpawnRedClone()
     {
-        Instantiate(chosenRedClone, chosenRedSpawn, Quaternion.identity);
+        //if regular clone and at least one stock
+        if (redCloneIndex == 0 && redStock >= regularCloneCost)
+        {
+            redStock -= regularCloneCost;
+            Instantiate(chosenRedClone, chosenRedSpawn, Quaternion.identity);
+            Debug.Log("You spawned a regular red clone!");
+        }
+        //or if heavy clone and at least on stock
+        else if (redCloneIndex == 1 && redStock >= heavyCloneCost)
+        {
+            redStock -= heavyCloneCost;
+            Instantiate(chosenRedClone, chosenRedSpawn, Quaternion.identity);
+            Debug.Log("You spawned a heavy red clone!");
+        }
+        else if (redCloneIndex == 2 && redStock >= speedCloneCost)
+        {
+            redStock -= speedCloneCost;
+            Instantiate(chosenRedClone, chosenRedSpawn, Quaternion.identity);
+            Debug.Log("You spawned a speedy red clone!");
+        }
     }
 
     //sets the text objects

@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80c66d763945cf43b45d781829510f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 25
 --- !u!114 &335918523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -969,14 +969,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blueStock: 0
   redStock: 0
-  growthRate: 1
-  blueStockText: {fileID: 0}
-  redStockText: {fileID: 0}
+  blueGrowthRate: 0.5
+  redGrowthRate: 0.5
+  blueStockText: {fileID: 319247720}
+  redStockText: {fileID: 1295153546}
+  regularCloneCost: 1
+  heavyCloneCost: 3
+  speedCloneCost: 2
   blueCloneList:
   - {fileID: 6236279406959995203, guid: 565368849f085014c8966b1c394e0dd2, type: 3}
   - {fileID: 4413293562591081624, guid: 7c96f2c48dec8ce4ebd04a2138934bd0, type: 3}
+  - {fileID: 6236279406959995203, guid: bc414db69c8d1354a803060ca684bcd7, type: 3}
   redCloneList:
   - {fileID: 2644515323594136844, guid: 93c267aa16f8bda408619f0b27e2b969, type: 3}
+  - {fileID: 2644515323594136844, guid: fbfbc700d64e20c4dbe2e022a720efa4, type: 3}
+  - {fileID: 6236279406959995203, guid: 19ec338185a2d5e43802312aee3475cd, type: 3}
   blueSpawnList:
   - {fileID: 1765922895}
   - {fileID: 1917882614}
@@ -1106,7 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80c66d763945cf43b45d781829510f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 25
 --- !u!114 &820408021
 MonoBehaviour:
   m_ObjectHideFlags: 0

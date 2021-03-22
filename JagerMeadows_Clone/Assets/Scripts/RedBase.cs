@@ -38,7 +38,7 @@ public class RedBase : MonoBehaviour
 
     void SetText()
     {
-        redHealthText.text = "Blue Health = " + redHealth.ToString();
+        redHealthText.text = "Red Health = " + redHealth.ToString();
     }
 
     void DealDamage()
