@@ -32,6 +32,20 @@ public class Spawner : MonoBehaviour
     bool blueHasUpgraded = false;
     bool redHasUpgraded = false;
 
+    public GameObject rnormalass;
+    public GameObject bnormalass;
+    public GameObject rspeedyboi;
+    public GameObject bspeedyboi;
+    public GameObject rGOOSE;
+    public GameObject bGOOSE;
+
+    public GameObject b1s;
+    public GameObject b2s;
+    public GameObject b3s;
+    public GameObject r1s;
+    public GameObject r2s;
+    public GameObject r3s;
+
     private void Start()
     {
         chosenBlueClone = blueCloneList[blueCloneIndex];
@@ -61,6 +75,7 @@ public class Spawner : MonoBehaviour
                 blueCloneIndex--;
                 Debug.Log("Blue clone index decreased by 1");
                 Debug.Log("Blue clone index = " + blueCloneIndex.ToString());
+                Floatymans();
             }
             chosenBlueClone = blueCloneList[blueCloneIndex];
         }
@@ -71,6 +86,7 @@ public class Spawner : MonoBehaviour
                 blueCloneIndex++;
                 Debug.Log("Blue clone index increased by 1");
                 Debug.Log("Blue clone index = " + blueCloneIndex.ToString());
+                Floatymans();
             }
             chosenBlueClone = blueCloneList[blueCloneIndex];
         }
@@ -82,6 +98,7 @@ public class Spawner : MonoBehaviour
                 redCloneIndex--;
                 Debug.Log("Red clone index decreased by 1");
                 Debug.Log("Red clone index = " + redCloneIndex.ToString());
+                Floatymans();
             }
             chosenRedClone = redCloneList[redCloneIndex];
         }
@@ -92,6 +109,7 @@ public class Spawner : MonoBehaviour
                 redCloneIndex++;
                 Debug.Log("Red clone index increased by 1");
                 Debug.Log("Red clone index = " + redCloneIndex.ToString());
+                Floatymans();
             }
             chosenRedClone = redCloneList[redCloneIndex];
         }
@@ -165,6 +183,57 @@ public class Spawner : MonoBehaviour
             {
                 SpawnRedClone();
             }
+        }
+    }
+
+    void Floatymans()
+    {
+        if (blueCloneIndex == 0)
+        {
+            //normalass
+            bnormalass.SetActive(true);
+            bspeedyboi.SetActive(false);
+            bGOOSE.SetActive(false);
+        }
+
+        if (blueCloneIndex == 1)
+        {
+            //bigboi
+            bnormalass.SetActive(false);
+            bspeedyboi.SetActive(false);
+            bGOOSE.SetActive(true);
+        }
+
+        if (blueCloneIndex == 2)
+        {
+            //speedyman
+            bnormalass.SetActive(false);
+            bspeedyboi.SetActive(true);
+            bGOOSE.SetActive(false);
+        }
+
+        if (redCloneIndex == 0)
+        {
+            //normalass
+            rnormalass.SetActive(true);
+            rspeedyboi.SetActive(false);
+            rGOOSE.SetActive(false);
+        }
+
+        if (redCloneIndex == 1)
+        {
+            //bigboi
+            rnormalass.SetActive(false);
+            rspeedyboi.SetActive(false);
+            rGOOSE.SetActive(true);
+        }
+
+        if (redCloneIndex == 2)
+        {
+            //speedyman
+            rnormalass.SetActive(false);
+            rspeedyboi.SetActive(true);
+            rGOOSE.SetActive(false);
         }
     }
 
