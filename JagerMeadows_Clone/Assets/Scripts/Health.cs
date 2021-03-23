@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     //variables
     public int health;
+    
 
     //function that when called removes health
     public void TakeDamage(int damageAmount)
@@ -14,6 +15,7 @@ public class Health : MonoBehaviour
 
         if (health <= 0)
         {
+            
             Destroy(gameObject);
         }
     }

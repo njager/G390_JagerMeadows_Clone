@@ -46,8 +46,15 @@ public class Spawner : MonoBehaviour
     public GameObject r2s;
     public GameObject r3s;
 
+    private AudioSource a_source;
+    public AudioClip gooseclip;
+  
+    public AudioClip[] blue_clips;
+    public AudioClip[] fast_clips;
+
     private void Start()
     {
+        a_source = gameObject.GetComponent<AudioSource>();
         chosenBlueClone = blueCloneList[blueCloneIndex];
         chosenRedClone = redCloneList[redCloneIndex];
         chosenBlueSpawn = blueSpawnList[blueSpawnIndex].position;
@@ -300,6 +307,7 @@ public class Spawner : MonoBehaviour
             blueStock -= regularCloneCost;
             Instantiate(chosenBlueClone, chosenBlueSpawn, Quaternion.identity);
             Debug.Log("You spawned a regular blue clone!");
+            Bluesound();
         }
         //or if heavy clone and at least on stock
         else if (blueCloneIndex == 1 && blueStock >= heavyCloneCost)
@@ -307,12 +315,14 @@ public class Spawner : MonoBehaviour
             blueStock -= heavyCloneCost;
             Instantiate(chosenBlueClone, chosenBlueSpawn, Quaternion.identity);
             Debug.Log("You spawned a heavy blue clone!");
+            Goosesound();
         }
         else if (blueCloneIndex == 2 && blueStock >= speedCloneCost)
         {
             blueStock -= speedCloneCost;
             Instantiate(chosenBlueClone, chosenBlueSpawn, Quaternion.identity);
             Debug.Log("You spawned a speedy blue clone!");
+            Fastsound();
         }
     }
     void SpawnRedClone()
@@ -323,6 +333,7 @@ public class Spawner : MonoBehaviour
             redStock -= regularCloneCost;
             Instantiate(chosenRedClone, chosenRedSpawn, Quaternion.identity);
             Debug.Log("You spawned a regular red clone!");
+            Bluesound();
         }
         //or if heavy clone and at least on stock
         else if (redCloneIndex == 1 && redStock >= heavyCloneCost)
@@ -330,12 +341,14 @@ public class Spawner : MonoBehaviour
             redStock -= heavyCloneCost;
             Instantiate(chosenRedClone, chosenRedSpawn, Quaternion.identity);
             Debug.Log("You spawned a heavy red clone!");
+            Goosesound();
         }
         else if (redCloneIndex == 2 && redStock >= speedCloneCost)
         {
             redStock -= speedCloneCost;
             Instantiate(chosenRedClone, chosenRedSpawn, Quaternion.identity);
             Debug.Log("You spawned a speedy red clone!");
+            Fastsound();
         }
     }
 
@@ -345,4 +358,26 @@ public class Spawner : MonoBehaviour
         blueStockText.text = "Blue stock = " + blueStock.ToString("F1");
         redStockText.text = "Red stock = " + redStock.ToString("F1");
     }
+
+    
+
+    public void Bluesound()
+    {
+        int selection = Random.Range(0, blue_clips.Length);
+        a_source.PlayOneShot(blue_clips[selection]);
+    }
+
+    public void Goosesound()
+    {
+        a_source.PlayOneShot(gooseclip);
+    }
+
+    public void Fastsound()
+    {
+        int selection = Random.Range(0, fast_clips.Length);
+        a_source.PlayOneShot(fast_clips[selection]);
+    }
+
 }
+
+
