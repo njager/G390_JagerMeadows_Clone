@@ -121,6 +121,7 @@ public class Spawner : MonoBehaviour
                 blueSpawnIndex--;
                 Debug.Log("Blue spawn index decreased by 1");
                 Debug.Log("Blue spawn index = " + blueSpawnIndex.ToString());
+                Lilymans();
             }
             chosenBlueSpawn = blueSpawnList[blueSpawnIndex].position;
         }
@@ -131,6 +132,7 @@ public class Spawner : MonoBehaviour
                 blueSpawnIndex++;
                 Debug.Log("Blue spawn index increased by 1");
                 Debug.Log("Blue spawn index = " + blueSpawnIndex.ToString());
+                Lilymans();
             }
             chosenBlueSpawn = blueSpawnList[blueSpawnIndex].position;
         }
@@ -142,6 +144,7 @@ public class Spawner : MonoBehaviour
                 redSpawnIndex--;
                 Debug.Log("Red spawn index decreased by 1");
                 Debug.Log("Red spawn index = " + redSpawnIndex.ToString());
+                Lilymans();
             }
             chosenRedSpawn = redSpawnList[redSpawnIndex].position;
         }
@@ -152,6 +155,7 @@ public class Spawner : MonoBehaviour
                 redSpawnIndex++;
                 Debug.Log("Red spawn index increased by 1");
                 Debug.Log("Red spawn index = " + redSpawnIndex.ToString());
+                Lilymans();
             }
             chosenRedSpawn = redSpawnList[redSpawnIndex].position;
         }
@@ -186,6 +190,56 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    void Lilymans()
+    {
+        if (blueSpawnIndex == 0)
+        {
+            //normalass
+            b1s.SetActive(true);
+            b2s.SetActive(false);
+            b3s.SetActive(false);
+        }
+
+        if (blueSpawnIndex == 1)
+        {
+            //bigboi
+            b1s.SetActive(false);
+            b2s.SetActive(true);
+            b3s.SetActive(false);
+        }
+
+        if (blueSpawnIndex == 2)
+        {
+            //speedyman
+            b1s.SetActive(false);
+            b2s.SetActive(false);
+            b3s.SetActive(true);
+        }
+
+        if (redSpawnIndex == 0)
+        {
+            //normalass
+            r1s.SetActive(true);
+            r2s.SetActive(false);
+            r3s.SetActive(false);
+        }
+
+        if (redSpawnIndex == 1)
+        {
+            //bigboi
+            r1s.SetActive(false);
+            r2s.SetActive(true);
+            r3s.SetActive(false);
+        }
+
+        if (redSpawnIndex == 2)
+        {
+            //speedyman
+            r1s.SetActive(false);
+            r2s.SetActive(false);
+            r3s.SetActive(true); 
+        }
+    }
     void Floatymans()
     {
         if (blueCloneIndex == 0)
