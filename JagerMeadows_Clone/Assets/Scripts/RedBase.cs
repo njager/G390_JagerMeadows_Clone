@@ -27,7 +27,7 @@ public class RedBase : MonoBehaviour
     private void FixedUpdate()
     {
         redHealth = GetComponent<Health>().health;
-        //SetText();
+        SetText();
         
 
 

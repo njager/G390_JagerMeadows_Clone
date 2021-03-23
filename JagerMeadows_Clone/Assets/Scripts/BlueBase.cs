@@ -28,7 +28,7 @@ public class BlueBase : MonoBehaviour
     {
         blueHealth = GetComponent<Health>().health;
         
-        //SetText();
+        SetText();
     }
 
     private void OnCollisionEnter(Collision collision)
