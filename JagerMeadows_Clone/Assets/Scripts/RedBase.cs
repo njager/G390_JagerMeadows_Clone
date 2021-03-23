@@ -29,6 +29,8 @@ public class RedBase : MonoBehaviour
         redHealth = GetComponent<Health>().health;
         //SetText();
         
+
+
     }
 
     private void OnCollisionEnter(Collision collision)
