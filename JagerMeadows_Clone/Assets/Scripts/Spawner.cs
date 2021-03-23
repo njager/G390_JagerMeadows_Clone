@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] int regularCloneCost;
     [SerializeField] int heavyCloneCost;
     [SerializeField] int speedCloneCost;
+    [SerializeField] int upgradeCost;
     [SerializeField] private List<Transform> blueCloneList;
     [SerializeField] private List<Transform> redCloneList;
     [SerializeField] private List<Transform> blueSpawnList;
@@ -167,17 +168,17 @@ public class Spawner : MonoBehaviour
             }
             chosenRedSpawn = redSpawnList[redSpawnIndex].position;
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && blueStock >= 20 && blueHasUpgraded == false)
+        else if (Input.GetKeyDown(KeyCode.Q) && blueStock >= upgradeCost && blueHasUpgraded == false)
         {
             blueGrowthRate *= 1.5f;
             blueHasUpgraded = true;
-            blueStock -= 20;
+            blueStock -= upgradeCost;
         }
-        else if (Input.GetKeyDown(KeyCode.P) && redStock >= 20 && redHasUpgraded == false)
+        else if (Input.GetKeyDown(KeyCode.P) && redStock >= upgradeCost && redHasUpgraded == false)
         {
             redGrowthRate *= 1.5f;
             redHasUpgraded = true;
-            redStock -= 20;
+            redStock -= upgradeCost;
         }
 
         //get the input to spawn the clone
