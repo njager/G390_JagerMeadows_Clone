@@ -48,7 +48,7 @@ public class Spawner : MonoBehaviour
 
     private AudioSource a_source;
     public AudioClip gooseclip;
-  
+   
     public AudioClip[] blue_clips;
     public AudioClip[] fast_clips;
 
@@ -371,6 +371,8 @@ public class Spawner : MonoBehaviour
     {
         a_source.PlayOneShot(gooseclip);
     }
+
+    
 
     public void Fastsound()
     {

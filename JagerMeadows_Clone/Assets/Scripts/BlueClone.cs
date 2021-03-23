@@ -7,6 +7,7 @@ public class BlueClone : MonoBehaviour
     //public variables
     public float speed;
     public int damage;
+   
 
     //private variables
     Rigidbody rB;
@@ -46,4 +47,6 @@ public class BlueClone : MonoBehaviour
             CancelInvoke("DealDamage");
         }
     }
+
+    
 }

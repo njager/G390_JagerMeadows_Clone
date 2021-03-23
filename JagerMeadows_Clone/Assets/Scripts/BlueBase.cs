@@ -12,10 +12,14 @@ public class BlueBase : MonoBehaviour
     [SerializeField] int damage;
     int blueHealth;
     Health health;
+    public AudioClip eggclip;
+    private AudioSource basesource;
+    public GameObject redwin;
 
     // Start is called before the first frame update
     void Start()
     {
+        basesource = gameObject.GetComponent<AudioSource>();
         blueHealth = GetComponent<Health>().health;
         SetText();
     }
@@ -23,6 +27,7 @@ public class BlueBase : MonoBehaviour
     private void FixedUpdate()
     {
         blueHealth = GetComponent<Health>().health;
+        
         //SetText();
     }
 
@@ -48,10 +53,26 @@ public class BlueBase : MonoBehaviour
             health.TakeDamage(damage);
             Debug.Log("Blue base is dealing damage to red clone!");
             SetText();
+            Eggsound();
+            Ending();
         }
+        
         else
         {
             CancelInvoke("DealDamage");
         }
+    }
+
+    void Ending()
+    {
+        if (blueHealth == 1)
+        {
+            redwin.SetActive(true);
+        }
+    }
+
+    public void Eggsound()
+    {
+        basesource.PlayOneShot(eggclip);
     }
 }
