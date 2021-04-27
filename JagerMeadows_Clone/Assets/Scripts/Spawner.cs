@@ -34,19 +34,19 @@ public class Spawner : MonoBehaviour
     bool blueHasUpgraded = false;
     bool redHasUpgraded = false;
 
-    public GameObject rnormalass;
-    public GameObject bnormalass;
-    public GameObject rspeedyboi;
-    public GameObject bspeedyboi;
-    public GameObject rGOOSE;
-    public GameObject bGOOSE;
+    [SerializeField] GameObject rnormalass;
+    [SerializeField] GameObject bnormalass;
+    [SerializeField] GameObject rspeedyboi;
+    [SerializeField] GameObject bspeedyboi;
+    [SerializeField] GameObject rGOOSE;
+    [SerializeField] GameObject bGOOSE;
 
-    public GameObject b1s;
-    public GameObject b2s;
-    public GameObject b3s;
-    public GameObject r1s;
-    public GameObject r2s;
-    public GameObject r3s;
+    [SerializeField] GameObject b1s;
+    [SerializeField] GameObject b2s;
+    [SerializeField] GameObject b3s;
+    [SerializeField] GameObject r1s;
+    [SerializeField] GameObject r2s;
+    [SerializeField] GameObject r3s;
 
     private AudioSource a_source;
     public AudioClip gooseclip;
