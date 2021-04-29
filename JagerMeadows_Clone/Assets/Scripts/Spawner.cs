@@ -68,6 +68,7 @@ public class Spawner : MonoBehaviour
     //AI variables
     public bool useAI;
     private bool toggle;
+    WaitForSeconds delay = new WaitForSeconds(1);
 
     private void Start()
     {
@@ -95,7 +96,7 @@ public class Spawner : MonoBehaviour
 
         //choosing the clone and spawn point
         //cycle choose the blue clone to spawn
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             if (blueCloneIndex > 0)
             {
@@ -106,7 +107,7 @@ public class Spawner : MonoBehaviour
             }
             chosenBlueClone = blueCloneList[blueCloneIndex];
         }
-        else if (Input.GetKeyDown(KeyCode.X))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             if (blueCloneIndex < blueCloneList.Count - 1)
             {
@@ -436,7 +437,7 @@ public class Spawner : MonoBehaviour
                 chosenRedClone = redCloneList[redCloneIndex];
                 chosenRedSpawn = redSpawnList[redSpawnIndex].position;
                 SpawnRedClone();
-                yield return null;
+                yield return delay;
             }
             //wait a random interval of time then repeat
             yield return new WaitForSeconds(Random.Range(1, 10));
