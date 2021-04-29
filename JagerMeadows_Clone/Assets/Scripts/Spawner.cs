@@ -457,12 +457,14 @@ public class Spawner : MonoBehaviour
     {
         if (toggle == false)
         {
+            Debug.Log("Button toggled on AI");
             AIOn();
             toggle = true;
         }
 
-        if (toggle == true)
+        else if (toggle == true)
         {
+            Debug.Log("Button toggled off AI");
             AIOff();
             toggle = false;
         }
@@ -477,8 +479,8 @@ public class Spawner : MonoBehaviour
 
     public void AIOff()
     {
-      StopCoroutine(RunAI());
-       useAI = false;
+        StopCoroutine(RunAI());
+        useAI = false;
     }
 
     public void RUpgrade()
