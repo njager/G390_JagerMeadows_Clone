@@ -69,9 +69,9 @@ public class RedBase : MonoBehaviour
             SetText();
             Eggsound();
         }
-        
-        else
+        else if (health.health < 0)
         {
+            Debug.Log("Stopped dealing damage");
             CancelInvoke("DealDamage");
         }
     }
