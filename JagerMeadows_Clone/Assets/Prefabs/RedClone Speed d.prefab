@@ -80,6 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   body: {fileID: 7870782566523240033}
+  explosion: {fileID: 6237553109302029178, guid: 028315ff90f3b77478f6282592e23c74,
+    type: 3}
 --- !u!114 &3829177877886915251
 MonoBehaviour:
   m_ObjectHideFlags: 0

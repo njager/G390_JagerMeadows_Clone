@@ -494,6 +494,18 @@ public class Spawner : MonoBehaviour
             blueStock -= upgradeCost;
         
     }
+
+    public void EndButton()
+    {
+        Debug.Log("ended");
+        Application.Quit();
+    }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadSceneAsync(
+        SceneManager.GetActiveScene().buildIndex);
+    }
 }
 
 
