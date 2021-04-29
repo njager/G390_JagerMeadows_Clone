@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     //function that when called removes health
     public void TakeDamage(int damageAmount)
     {
+        //this.GameObject
         health -= damageAmount;
 
         if (health <= 0)

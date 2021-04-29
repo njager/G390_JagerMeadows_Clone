@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class Spawner : MonoBehaviour
 {
@@ -53,12 +55,19 @@ public class Spawner : MonoBehaviour
     //audio variables
     private AudioSource a_source;
     public AudioClip gooseclip;
-   
+
     public AudioClip[] blue_clips;
     public AudioClip[] fast_clips;
 
+    [SerializeField] Button RedUpgrade;
+    [SerializeField] Button BlueUpgrade;
+
+    public AudioClip bloop;
+    public AudioClip rustle;
+
     //AI variables
     public bool useAI;
+    private bool toggle;
 
     private void Start()
     {
@@ -69,8 +78,9 @@ public class Spawner : MonoBehaviour
         chosenRedSpawn = redSpawnList[redSpawnIndex].position;
 
         SetText();
-        StartCoroutine(RunAI());
-        //StopCoroutine(RunAI());
+        toggle = false;
+        
+
     }
 
     // Update is called once per frame
@@ -87,7 +97,7 @@ public class Spawner : MonoBehaviour
         //cycle choose the blue clone to spawn
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if(blueCloneIndex > 0)
+            if (blueCloneIndex > 0)
             {
                 blueCloneIndex--;
                 Debug.Log("Blue clone index decreased by 1");
@@ -176,17 +186,23 @@ public class Spawner : MonoBehaviour
             }
             chosenRedSpawn = redSpawnList[redSpawnIndex].position;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftControl) && blueStock >= upgradeCost)
+        if (blueStock >= upgradeCost)
         {
-            blueGrowthRate *= upgradeEffect;
-            //blueHasUpgraded = true;
-            blueStock -= upgradeCost;
+            BlueUpgrade.interactable = true;
+
         }
-        else if (Input.GetKeyDown(KeyCode.RightControl) && redStock >= upgradeCost)
+        if (redStock >= upgradeCost)
         {
-            redGrowthRate *= upgradeEffect;
-            //redHasUpgraded = true;
-            redStock -= upgradeCost;
+            RedUpgrade.interactable = true;
+
+        }
+        if (blueStock < upgradeCost)
+        {
+            BlueUpgrade.interactable = false;
+        }
+        if (redStock < upgradeCost)
+        {
+            RedUpgrade.interactable = false;
         }
 
         //get the input to spawn the clone
@@ -227,6 +243,7 @@ public class Spawner : MonoBehaviour
 
     void Lilymans()
     {
+        a_source.PlayOneShot(bloop);
         if (blueSpawnIndex == 0)
         {
             //normalass
@@ -272,11 +289,12 @@ public class Spawner : MonoBehaviour
             //speedyman
             r1s.SetActive(false);
             r2s.SetActive(false);
-            r3s.SetActive(true); 
+            r3s.SetActive(true);
         }
     }
     void Floatymans()
     {
+        a_source.PlayOneShot(rustle);
         if (blueCloneIndex == 0)
         {
             //normalass
@@ -409,21 +427,21 @@ public class Spawner : MonoBehaviour
     {
         while (useAI == true)
         {
-        Debug.Log("Using AI!");
-        while (redStock > 1)
-        {
-            Debug.Log("AI Spawning clone");
-            redCloneIndex = Random.Range(0, 3);
-            redSpawnIndex = Random.Range(0, 3);
-            chosenRedClone = redCloneList[redCloneIndex];
-            chosenRedSpawn = redSpawnList[redSpawnIndex].position;
-            SpawnRedClone();
-            yield return null;
-        }
+            Debug.Log("Using AI!");
+            while (redStock > 1)
+            {
+                Debug.Log("AI Spawning clone");
+                redCloneIndex = Random.Range(0, 3);
+                redSpawnIndex = Random.Range(0, 3);
+                chosenRedClone = redCloneList[redCloneIndex];
+                chosenRedSpawn = redSpawnList[redSpawnIndex].position;
+                SpawnRedClone();
+                yield return null;
+            }
             //wait a random interval of time then repeat
             yield return new WaitForSeconds(Random.Range(1, 10));
-       }
-       Debug.Log("AI done!");
+        }
+        Debug.Log("AI done!");
     }
 
     /*bool UseAI()
@@ -433,6 +451,55 @@ public class Spawner : MonoBehaviour
 
         }
     }*/
+
+
+    public void AIbutton()
+    {
+        if (toggle == false)
+        {
+            AIOn();
+            toggle = true;
+        }
+
+        if (toggle == true)
+        {
+            AIOff();
+            toggle = false;
+        }
+
+    }
+
+    public void AIOn()
+    {
+        useAI = true;
+        StartCoroutine(RunAI());
+    }
+
+    public void AIOff()
+    {
+      StopCoroutine(RunAI());
+       useAI = false;
+    }
+
+    public void RUpgrade()
+    {
+        
+
+            redGrowthRate *= upgradeEffect;
+            //redHasUpgraded = true;
+            redStock -= upgradeCost;
+        
+    }
+    
+    public void BUpgrade()
+    {
+        
+
+            blueGrowthRate *= upgradeEffect;
+            //blueHasUpgraded = true;
+            blueStock -= upgradeCost;
+        
+    }
 }
 
 

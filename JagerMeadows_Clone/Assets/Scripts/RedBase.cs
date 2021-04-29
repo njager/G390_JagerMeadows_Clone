@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class RedBase : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class RedBase : MonoBehaviour
     public AudioClip eggclip;
     private AudioSource basesource;
     public GameObject bluewin;
+    [SerializeField] GameObject EndImage;
+
+    [SerializeField] GameObject bluepost;
+    
+    [SerializeField] GameObject blueend;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +59,10 @@ public class RedBase : MonoBehaviour
         if (redHealth == 1)
         {
             bluewin.SetActive(true);
+            EndImage.SetActive(true);
+
+            bluepost.SetActive(true);
+            blueend.SetActive(true);
         }
     }
 
