@@ -34,8 +34,8 @@ public class Spawner : MonoBehaviour
     int redSpawnIndex = 0;
     bool blueHasUpgraded = false;
     bool redHasUpgraded = false;
-    bool useAI;
 
+    //visual variables
     [SerializeField] GameObject rnormalass;
     [SerializeField] GameObject bnormalass;
     [SerializeField] GameObject rspeedyboi;
@@ -50,11 +50,15 @@ public class Spawner : MonoBehaviour
     [SerializeField] GameObject r2s;
     [SerializeField] GameObject r3s;
 
+    //audio variables
     private AudioSource a_source;
     public AudioClip gooseclip;
    
     public AudioClip[] blue_clips;
     public AudioClip[] fast_clips;
+
+    //AI variables
+    public bool useAI;
 
     private void Start()
     {
@@ -65,6 +69,8 @@ public class Spawner : MonoBehaviour
         chosenRedSpawn = redSpawnList[redSpawnIndex].position;
 
         SetText();
+        StartCoroutine(RunAI());
+        //StopCoroutine(RunAI());
     }
 
     // Update is called once per frame
@@ -210,6 +216,12 @@ public class Spawner : MonoBehaviour
         {
             SceneManager.LoadSceneAsync(
             SceneManager.GetActiveScene().buildIndex);
+        }
+
+        //coroutine start
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            StartCoroutine(RunAI());
         }
     }
 
@@ -375,7 +387,6 @@ public class Spawner : MonoBehaviour
         redStockText.text = "Red stock = " + redStock.ToString("F1");
     }
 
-    
 
     public void Bluesound()
     {
@@ -388,14 +399,40 @@ public class Spawner : MonoBehaviour
         a_source.PlayOneShot(gooseclip);
     }
 
-    
-
     public void Fastsound()
     {
         int selection = Random.Range(0, fast_clips.Length);
         a_source.PlayOneShot(fast_clips[selection]);
     }
 
+    IEnumerator RunAI()
+    {
+        while (useAI == true)
+        {
+        Debug.Log("Using AI!");
+        while (redStock > 1)
+        {
+            Debug.Log("AI Spawning clone");
+            redCloneIndex = Random.Range(0, 3);
+            redSpawnIndex = Random.Range(0, 3);
+            chosenRedClone = redCloneList[redCloneIndex];
+            chosenRedSpawn = redSpawnList[redSpawnIndex].position;
+            SpawnRedClone();
+            yield return null;
+        }
+            //wait a random interval of time then repeat
+            yield return new WaitForSeconds(Random.Range(1, 10));
+       }
+       Debug.Log("AI done!");
+    }
+
+    /*bool UseAI()
+    {
+        if (Input.GetButtonDown(KeyCode.O))
+        {
+
+        }
+    }*/
 }
 
 
