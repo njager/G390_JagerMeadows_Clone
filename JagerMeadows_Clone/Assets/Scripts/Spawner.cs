@@ -432,6 +432,12 @@ public class Spawner : MonoBehaviour
             while (redStock > 1)
             {
                 Debug.Log("AI Spawning clone");
+                if (redStock > 5)
+                {
+                    redGrowthRate *= upgradeEffect;
+                    //redHasUpgraded = true;
+                    redStock -= upgradeCost;
+                }
                 redCloneIndex = Random.Range(0, 3);
                 redSpawnIndex = Random.Range(0, 3);
                 chosenRedClone = redCloneList[redCloneIndex];
