@@ -42,6 +42,7 @@ public class RedBase : MonoBehaviour
 
             bluepost.SetActive(true);
             blueend.SetActive(true);
+            CameraShake.Shake(0.01f, 0.1f);
         }
     }
 
