@@ -444,14 +444,6 @@ public class Spawner : MonoBehaviour
         Debug.Log("AI done!");
     }
 
-    /*bool UseAI()
-    {
-        if (Input.GetButtonDown(KeyCode.O))
-        {
-
-        }
-    }*/
-
 
     public void AIbutton()
     {
