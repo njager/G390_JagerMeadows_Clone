@@ -1,23 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FlashingObjects3 : MonoBehaviour
 {
 
-    private Material _mat;
-    private Color[] _colors = { Color.gray, Color.red };
-    [SerializeField] Material[] materials;
-    
+    //private Material _mat;
+    //private Color[] _colors = { Color.gray, Color.red };
+    [SerializeField] Material originalmaterial;
+    [SerializeField] Material redmaterial;
     private float _flashSpeed = 0.1f;
     private float _lengthOfTimeToFlash = 0.2f;
     [SerializeField] GameObject duckmesh;
-    private Color originalcolor;
+    //private Color originalcolor;
 
     public void Awake()
     {
 
-        _mat = duckmesh.GetComponent<MeshRenderer>().material;
-        originalcolor = new Color(0.37f, 0.32f, 0.3f);
+        //_mat = duckmesh.GetComponent<MeshRenderer>().material;
+        //originalcolor = new Color(0.37f, 0.32f, 0.3f);
 
     }
     // Use this for initialization
@@ -32,7 +33,7 @@ public class FlashingObjects3 : MonoBehaviour
         int index = 0;
         while (elapsedTime < time)
         {
-            //_mat.material = materials[index % 2];
+            duckmesh.GetComponent<MeshRenderer>().material = redmaterial;
 
             elapsedTime += Time.deltaTime;
             index++;
@@ -41,7 +42,7 @@ public class FlashingObjects3 : MonoBehaviour
 
         if (elapsedTime >= time)
         {
-            _mat.color = originalcolor;
+            duckmesh.GetComponent<MeshRenderer>().material = originalmaterial;
         }
     }
 }

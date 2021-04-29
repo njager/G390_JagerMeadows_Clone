@@ -34,8 +34,10 @@ public class BlueBase : MonoBehaviour
     private void FixedUpdate()
     {
         blueHealth = GetComponent<Health>().health;
-        
+
         SetText();
+
+       
 
         if (blueHealth <= 0)
         {
@@ -45,6 +47,10 @@ public class BlueBase : MonoBehaviour
             redpost.SetActive(true);
             redend.SetActive(true);
         }
+
+
+        
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -71,9 +77,10 @@ public class BlueBase : MonoBehaviour
             SetText();
             Eggsound();
         }
-        
-        else
+
+        else if (health.health < 0)
         {
+            Debug.Log("Stopped dealing damage");
             CancelInvoke("DealDamage");
         }
     }

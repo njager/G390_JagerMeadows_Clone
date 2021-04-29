@@ -2498,6 +2498,7 @@ MonoBehaviour:
   r2s: {fileID: 2052820012}
   r3s: {fileID: 804734529}
   gooseclip: {fileID: 8300000, guid: a22ff4f23d5c4d44ea55d3ecffa44a2b, type: 3}
+  soundtrack: {fileID: 1248690684}
   blue_clips:
   - {fileID: 8300000, guid: 741f2a57420abef43a1bf417b96d8313, type: 3}
   - {fileID: 8300000, guid: 557185f4900671f4ea6188d5b1f1e356, type: 3}
@@ -5154,6 +5155,11 @@ MonoBehaviour:
   body: {fileID: 503122778}
   explosion: {fileID: 5188872984447376139, guid: 848e19326a3e611488c952f5ba97c0cb,
     type: 3}
+  originalmaterial: {fileID: 2100000, guid: 5bfbfdebccebf0c45832bef70d1337f7, type: 2}
+  redmaterial: {fileID: 2100000, guid: 331777fe447e0124c848027a99db0f93, type: 2}
+  duckmesh: {fileID: 503122778}
+  sqeaks:
+  - {fileID: 8300000, guid: 9be32dd67f019294a88617861a49af71, type: 3}
 --- !u!65 &1043504108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5542,12 +5548,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 632133215}
-        m_MethodName: 
+      - m_Target: {fileID: 632133216}
+        m_MethodName: StopMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10314,6 +10320,11 @@ MonoBehaviour:
   body: {fileID: 548413704}
   explosion: {fileID: 5188872984447376139, guid: 848e19326a3e611488c952f5ba97c0cb,
     type: 3}
+  originalmaterial: {fileID: 2100000, guid: 5bfbfdebccebf0c45832bef70d1337f7, type: 2}
+  redmaterial: {fileID: 2100000, guid: 941ea084736d9a74eb47ac8ab192b33d, type: 2}
+  duckmesh: {fileID: 548413704}
+  sqeaks:
+  - {fileID: 8300000, guid: 9be32dd67f019294a88617861a49af71, type: 3}
 --- !u!114 &1953587466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12805,7 +12816,6 @@ GameObject:
   - component: {fileID: 5457425215864877538}
   - component: {fileID: 5457425215864877539}
   - component: {fileID: 5457425215864877564}
-  - component: {fileID: 8887822867513963781}
   m_Layer: 8
   m_Name: RedClone bodd
   m_TagString: RedClone
@@ -13627,21 +13637,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8887822867513963781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5457425215864877565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80c66d763945cf43b45d781829510f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 2
-  body: {fileID: 0}
-  explosion: {fileID: 0}
 --- !u!33 &8918766172660620491
 MeshFilter:
   m_ObjectHideFlags: 0

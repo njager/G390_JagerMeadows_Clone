@@ -55,6 +55,7 @@ public class Spawner : MonoBehaviour
     //audio variables
     private AudioSource a_source;
     public AudioClip gooseclip;
+    public AudioSource soundtrack;
 
     public AudioClip[] blue_clips;
     public AudioClip[] fast_clips;
@@ -64,6 +65,10 @@ public class Spawner : MonoBehaviour
 
     public AudioClip bloop;
     public AudioClip rustle;
+    private bool musictoggle;
+
+    //public AudioClip[] musics;
+   // private int shownGameObjectIndex = -1;
 
     //AI variables
     public bool useAI;
@@ -80,9 +85,11 @@ public class Spawner : MonoBehaviour
 
         SetText();
         toggle = false;
-        
+        musictoggle = false;
 
     }
+
+    
 
     // Update is called once per frame
     void Update()
@@ -512,6 +519,22 @@ public class Spawner : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(
         SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void StopMusic()
+    {
+        if (musictoggle == false)
+        {
+            soundtrack.Stop();
+            musictoggle = true;
+        }
+
+        else if (musictoggle == true)
+        {
+            soundtrack.Play();
+            musictoggle = false;
+        }
+
     }
 }
 
