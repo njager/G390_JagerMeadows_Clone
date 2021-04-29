@@ -19,6 +19,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] int heavyCloneCost;
     [SerializeField] int speedCloneCost;
     [SerializeField] int upgradeCost;
+    [SerializeField] float upgradeEffect;
     [SerializeField] private List<Transform> blueCloneList;
     [SerializeField] private List<Transform> redCloneList;
     [SerializeField] private List<Transform> blueSpawnList;
@@ -33,6 +34,7 @@ public class Spawner : MonoBehaviour
     int redSpawnIndex = 0;
     bool blueHasUpgraded = false;
     bool redHasUpgraded = false;
+    bool useAI;
 
     [SerializeField] GameObject rnormalass;
     [SerializeField] GameObject bnormalass;
@@ -100,7 +102,7 @@ public class Spawner : MonoBehaviour
             chosenBlueClone = blueCloneList[blueCloneIndex];
         }
         //cycle choose the red clone to spawn
-        else if (Input.GetKeyDown(KeyCode.Comma))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if (redCloneIndex > 0)
             {
@@ -111,7 +113,7 @@ public class Spawner : MonoBehaviour
             }
             chosenRedClone = redCloneList[redCloneIndex];
         }
-        else if (Input.GetKeyDown(KeyCode.Period))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (redCloneIndex < redCloneList.Count - 1)
             {
@@ -123,7 +125,7 @@ public class Spawner : MonoBehaviour
             chosenRedClone = redCloneList[redCloneIndex];
         }
         //cycle choose the blue spawn point
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             if (blueSpawnIndex > 0)
             {
@@ -134,7 +136,7 @@ public class Spawner : MonoBehaviour
             }
             chosenBlueSpawn = blueSpawnList[blueSpawnIndex].position;
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
             if (blueSpawnIndex < blueSpawnList.Count - 1)
             {
@@ -146,7 +148,7 @@ public class Spawner : MonoBehaviour
             chosenBlueSpawn = blueSpawnList[blueSpawnIndex].position;
         }
         //cycle choose the red spawn point
-        else if (Input.GetKeyDown(KeyCode.K))
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (redSpawnIndex > 0)
             {
@@ -157,7 +159,7 @@ public class Spawner : MonoBehaviour
             }
             chosenRedSpawn = redSpawnList[redSpawnIndex].position;
         }
-        else if (Input.GetKeyDown(KeyCode.L))
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (redSpawnIndex < redSpawnList.Count - 1)
             {
@@ -168,16 +170,16 @@ public class Spawner : MonoBehaviour
             }
             chosenRedSpawn = redSpawnList[redSpawnIndex].position;
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && blueStock >= upgradeCost && blueHasUpgraded == false)
+        else if (Input.GetKeyDown(KeyCode.LeftControl) && blueStock >= upgradeCost)
         {
-            blueGrowthRate *= 1.5f;
-            blueHasUpgraded = true;
+            blueGrowthRate *= upgradeEffect;
+            //blueHasUpgraded = true;
             blueStock -= upgradeCost;
         }
-        else if (Input.GetKeyDown(KeyCode.P) && redStock >= upgradeCost && redHasUpgraded == false)
+        else if (Input.GetKeyDown(KeyCode.RightControl) && redStock >= upgradeCost)
         {
-            redGrowthRate *= 1.5f;
-            redHasUpgraded = true;
+            redGrowthRate *= upgradeEffect;
+            //redHasUpgraded = true;
             redStock -= upgradeCost;
         }
 
