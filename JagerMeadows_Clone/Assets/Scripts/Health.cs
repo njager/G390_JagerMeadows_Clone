@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
             Destroy(exploder, 2.0f);
             gameObject.GetComponent<Collider>().enabled = false;
             body.gameObject.SetActive(false);
-            Destroy(gameObject, 3);
+            Destroy(gameObject, 1);
         }
     }
 }

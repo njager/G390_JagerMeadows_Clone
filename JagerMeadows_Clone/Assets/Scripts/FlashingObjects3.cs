@@ -6,6 +6,8 @@ public class FlashingObjects3 : MonoBehaviour
 
     private Material _mat;
     private Color[] _colors = { Color.gray, Color.red };
+    [SerializeField] Material[] materials;
+    
     private float _flashSpeed = 0.1f;
     private float _lengthOfTimeToFlash = 0.2f;
     [SerializeField] GameObject duckmesh;
@@ -30,7 +32,7 @@ public class FlashingObjects3 : MonoBehaviour
         int index = 0;
         while (elapsedTime < time)
         {
-            _mat.color = _colors[index % 2];
+            //_mat.material = materials[index % 2];
 
             elapsedTime += Time.deltaTime;
             index++;
