@@ -2273,8 +2273,8 @@ MonoBehaviour:
   regularCloneCost: 1
   heavyCloneCost: 3
   speedCloneCost: 2
-  upgradeCost: 10
-  upgradeEffect: 0
+  upgradeCost: 5
+  upgradeEffect: 1.2
   blueCloneList:
   - {fileID: 1306919916840282806, guid: 4a2b6047dafc95641a9a6b8cec2999bd, type: 3}
   - {fileID: 9052444646209447255, guid: dbbd733417e3613459865f038cb42481, type: 3}
@@ -4915,8 +4915,8 @@ GameObject:
   - component: {fileID: 1043504110}
   - component: {fileID: 1043504109}
   - component: {fileID: 1043504108}
-  - component: {fileID: 1043504107}
   - component: {fileID: 1043504106}
+  - component: {fileID: 1043504107}
   - component: {fileID: 1043504112}
   m_Layer: 0
   m_Name: Redbase
@@ -4956,7 +4956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80c66d763945cf43b45d781829510f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
+  health: 5
 --- !u!65 &1043504108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5029,7 +5029,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1043504112
 AudioSource:
@@ -9718,7 +9718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80c66d763945cf43b45d781829510f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
+  health: 5
 --- !u!114 &1953587466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9810,7 +9810,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1953587471
 AudioSource:

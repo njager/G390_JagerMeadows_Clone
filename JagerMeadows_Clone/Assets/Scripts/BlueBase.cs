@@ -36,6 +36,15 @@ public class BlueBase : MonoBehaviour
         blueHealth = GetComponent<Health>().health;
         
         SetText();
+
+        if (blueHealth <= 0)
+        {
+            redwin.SetActive(true);
+            EndImage.SetActive(true);
+
+            redpost.SetActive(true);
+            redend.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -61,24 +70,11 @@ public class BlueBase : MonoBehaviour
             Debug.Log("Blue base is dealing damage to red clone!");
             SetText();
             Eggsound();
-            Ending();
         }
         
         else
         {
             CancelInvoke("DealDamage");
-        }
-    }
-
-    void Ending()
-    {
-        if (blueHealth == 1)
-        {
-            redwin.SetActive(true);
-            EndImage.SetActive(true);
-            
-            redpost.SetActive(true);
-            redend.SetActive(true);
         }
     }
 

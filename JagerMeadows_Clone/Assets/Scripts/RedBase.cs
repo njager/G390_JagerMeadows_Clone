@@ -34,9 +34,15 @@ public class RedBase : MonoBehaviour
     {
         redHealth = GetComponent<Health>().health;
         SetText();
-        
 
+        if (redHealth <= 0)
+        {
+            bluewin.SetActive(true);
+            EndImage.SetActive(true);
 
+            bluepost.SetActive(true);
+            blueend.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -54,18 +60,6 @@ public class RedBase : MonoBehaviour
         redHealthText.text = "Red Health = " + redHealth.ToString();
     }
 
-    void Ending()
-    {
-        if (redHealth == 1)
-        {
-            bluewin.SetActive(true);
-            EndImage.SetActive(true);
-
-            bluepost.SetActive(true);
-            blueend.SetActive(true);
-        }
-    }
-
     void DealDamage()
     {
         if (health.health > 0)
@@ -74,7 +68,6 @@ public class RedBase : MonoBehaviour
             Debug.Log("Red base is dealing damage to blue clone!");
             SetText();
             Eggsound();
-            Ending();
         }
         
         else
