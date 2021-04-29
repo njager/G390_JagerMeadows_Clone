@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     //variables
     public int health;
+    [SerializeField] GameObject body;
 
     //function that when called removes health
     public void TakeDamage(int damageAmount)
@@ -19,7 +20,9 @@ public class Health : MonoBehaviour
         }
         else if (health <= 0)
         {
-            Destroy(gameObject);
+            gameObject.GetComponent<Collider>().enabled = false;
+            body.gameObject.SetActive(false);
+            Destroy(gameObject, 3);
         }
     }
 }

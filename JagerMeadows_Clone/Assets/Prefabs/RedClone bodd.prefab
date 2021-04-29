@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  body: {fileID: 3385155399194279477}
 --- !u!114 &1593485400786819523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NORMALASSS (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 52347ede567ddb842801e33f5b2ccebd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5901893356585517859, guid: 52347ede567ddb842801e33f5b2ccebd,
         type: 3}
