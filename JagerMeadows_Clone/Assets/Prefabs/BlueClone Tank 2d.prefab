@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 7
+  body: {fileID: 1651093368550876843}
 --- !u!114 &5714041428928621593
 MonoBehaviour:
   m_ObjectHideFlags: 0
